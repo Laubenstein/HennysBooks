@@ -50,7 +50,7 @@ public class BookPanel extends JPanel {
             pagesLabel.setBackground(rowColor);
             add(pagesLabel);
             JButton removeButton = new JButton("Delete" );
-            String name = String.valueOf(buttonIndex)
+            String name = String.valueOf(buttonIndex);
             removeButton.setName(name);
             removeButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e)
