@@ -1,10 +1,11 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Iterator;
 
 
-public class BookPanel extends Panel {
+public class BookPanel extends JPanel {
     private Library model;
 
     private static final Color EVEN_ROW_COLOR = new Color(240, 240,255);
@@ -12,7 +13,7 @@ public class BookPanel extends Panel {
 
     public BookPanel(Library model) {
         this.model = model;
-        setBackground(Color.BLACK);
+        setBackground(Color.WHITE);
         setLayout(new GridLayout(0, 4, 0, 1));
         refresh();
     }
@@ -21,16 +22,16 @@ public class BookPanel extends Panel {
         removeAll();
         boolean isEvenRowNumber = true;
         // Überschriften
-        Label authorHeading = new Label("Author");
+        JLabel authorHeading = new JLabel("Author");
         authorHeading.setBackground(Color.PINK);
         add(authorHeading);
-        Label titleHeading = new Label("Book Title");
+        JLabel titleHeading = new JLabel("Book Title");
         titleHeading.setBackground(Color.PINK);
         add(titleHeading);
-        Label pagesHeading = new Label("Pages");
+        JLabel pagesHeading = new JLabel("Pages");
         pagesHeading.setBackground(Color.PINK);
         add(pagesHeading);
-        Label deleteButtonHeading = new Label("");
+        JLabel deleteButtonHeading = new JLabel("");
         deleteButtonHeading.setBackground(Color.PINK);
         add(deleteButtonHeading);
         Iterator<Book> iterator = model.iterator();
@@ -39,20 +40,23 @@ public class BookPanel extends Panel {
         while (iterator.hasNext()) {
             Book book = iterator.next();
             Color rowColor = isEvenRowNumber ? EVEN_ROW_COLOR : ODD_ROW_COLOR;
-            Label authorLabel = new Label(book.getAuthor());
+            JLabel authorLabel = new JLabel(book.getAuthor());
             authorLabel.setBackground(rowColor);
             add(authorLabel);
-            Label titleLabel = new Label(book.getTitle());
+            JLabel titleLabel = new JLabel(book.getTitle());
             titleLabel.setBackground(rowColor);
             add(titleLabel);
-            Label pagesLabel = new Label(String.valueOf(book.getPages()));
+            JLabel pagesLabel = new JLabel(String.valueOf(book.getPages()));
             pagesLabel.setBackground(rowColor);
             add(pagesLabel);
-            Button removeButton = new Button("" + buttonIndex);
+            JButton removeButton = new JButton("Delete" );
+            String name = String.valueOf(buttonIndex)
+            removeButton.setName(name);
             removeButton.addActionListener(new ActionListener() {
                 public void actionPerformed(ActionEvent e)
                 {
-                    model.removeBook(Integer.parseInt(removeButton.getLabel()));
+
+                    model.removeBook(Integer.parseInt(removeButton.getName()));
                     refresh();
                 }
             });

@@ -1,3 +1,4 @@
+import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -37,20 +38,20 @@ public class Controller extends WindowAdapter implements ActionListener{
     }
 
     private void createNewBookDialog() {
-        Dialog newBookDialog = new Dialog(frame, "Neues Buch", true);
-        Panel dataPanel = new Panel(new GridLayout(4, 2));
-        TextField authorTextField = new TextField(30);
-        TextField titleTextField = new TextField(30);
-        TextField pagesTextField = new TextField(10);
-        dataPanel.add(new Label("Autor: "));
+        JDialog newBookDialog = new JDialog(frame, "Neues Buch", true);
+        JPanel dataPanel = new JPanel(new GridLayout(4, 2));
+        JTextField authorTextField = new JTextField(30);
+        JTextField titleTextField = new JTextField(30);
+        JTextField pagesTextField = new JTextField(10);
+        dataPanel.add(new JLabel("Autor: "));
         dataPanel.add(authorTextField);
-        dataPanel.add(new Label("Buchtitel: "));
+        dataPanel.add(new JLabel("Buchtitel: "));
         dataPanel.add(titleTextField);
-        dataPanel.add(new Label("Seiten: "));
+        dataPanel.add(new JLabel("Seiten: "));
         dataPanel.add(pagesTextField);
         newBookDialog.add(dataPanel, BorderLayout.CENTER);
 
-        Button okButton = new Button("OK");
+        JButton okButton = new JButton("OK");
         okButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
@@ -70,7 +71,7 @@ public class Controller extends WindowAdapter implements ActionListener{
 
 
 
-        Panel southPanel = new Panel();
+        JPanel southPanel = new JPanel();
         southPanel.add(okButton);
         newBookDialog.add(southPanel, BorderLayout.SOUTH);
 

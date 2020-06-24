@@ -1,13 +1,14 @@
+import javax.swing.*;
 import java.awt.*;
 
 
 public class MainFrame extends Frame {
     ScrollPane scroll = new ScrollPane();
-    public MainFrame (BookPanel bookPanel, Button newButton) {
+    public MainFrame (BookPanel bookPanel, JButton newButton) {
         super("Bibliothek");
         setBackground(Color.LIGHT_GRAY);
         scroll.add(bookPanel, BorderLayout.NORTH);
-        Panel southPanel = new Panel();
+        JPanel southPanel = new JPanel();
         southPanel.add(newButton);
         add(southPanel, BorderLayout.SOUTH);
         add(scroll);

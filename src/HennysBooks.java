@@ -12,7 +12,7 @@ public class HennysBooks {
     public HennysBooks() throws LibraryException {
         initModelAndPersistence();
         BookPanel bookPanel = new BookPanel(library);
-        Button newBookButton = new Button("Neues Buch");
+        JButton newBookButton = new JButton("Neues Buch");
         mainFrame = new MainFrame(bookPanel, newBookButton);
         controller = new Controller(library, bookPanel, persistence, mainFrame);
         newBookButton.addActionListener(controller);
